@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #e53935;
+  --color-brand-dark: #d32f2f;
+  --color-success: #10b981;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+  }
+
+  body {
+    background: #f9fafb;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(15 23 42 / 0.55);
+}
