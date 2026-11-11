@@ -5,7 +5,7 @@ import { FormError } from '../components/ui/Field'
 import { BoardIcon, CheckIcon, WhatsAppIcon } from '../components/ui/Icons'
 import { Logo } from '../components/ui/Logo'
 import { inputClass, primaryButtonClass } from '../components/ui/styles'
-import { errorMessage } from '../lib/api'
+import { errorMessage, LANDING_URL } from '../lib/api'
 
 const BENEFICIOS = [
   { Icon: WhatsAppIcon, text: 'Pedidos por WhatsApp atendidos por IA, con comprobante y ubicación.' },
@@ -90,6 +90,14 @@ export function LoginPage() {
               {submitting ? 'Ingresando…' : 'Ingresar'}
             </button>
           </form>
+
+          <p className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">
+            ¿Eres el dueño?{' '}
+            <a href={`${LANDING_URL}/login`} className="font-semibold text-brand hover:text-brand-dark">
+              Ingresa con tu cuenta DeliSmart
+            </a>{' '}
+            y abre tu pollería desde Mi Plan.
+          </p>
         </div>
       </section>
     </div>

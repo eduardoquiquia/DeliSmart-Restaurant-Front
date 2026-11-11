@@ -1,6 +1,8 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios'
 
 export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001'
+/** Login de los dueños; desde "Mi Plan" entran a la pollería con la sesión iniciada. */
+export const LANDING_URL = (import.meta.env.VITE_LANDING_URL || 'http://localhost:3000').replace(/\/$/, '')
 export const POLLING_MS = Math.min(10_000, Math.max(5_000, Number(import.meta.env.VITE_POLLING_MS) || 5_000))
 
 const BASE_URL = `${API_URL}/api/v1`
