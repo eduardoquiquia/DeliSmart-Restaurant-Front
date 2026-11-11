@@ -12,7 +12,7 @@ npm run dev        # http://localhost:5174
 
 | Variable | Uso |
 | --- | --- |
-| `VITE_API_URL` | Backend de la pollería (por defecto `http://localhost:8001`) |
+| `VITE_API_URL` | Backend de la pollería (por defecto `http://localhost:8001`; en producción `.env.production` apunta a https://delismart-restaurant-back.onrender.com) |
 | `VITE_POLLING_MS` | Intervalo del polling de pedidos nuevos, entre 5000 y 10000 ms |
 
 Con `seed_demo` en el backend se entra con `admin`, `cajero` o `cocina` (contraseña `demo12345`).
@@ -22,6 +22,7 @@ Con `seed_demo` en el backend se entra con `admin`, `cajero` o `cocina` (contras
 | Ruta | Roles | Uso |
 | --- | --- | --- |
 | `/login` | todos | Login del personal con JWT |
+| `/sso` | admin | Entrada desde "Mi Plan" del panel admin con un enlace de un solo uso: abre el panel con la sesión iniciada |
 | `/dashboard` | admin | KPIs del día, ventas de 7 días, canal WhatsApp y más vendidos |
 | `/pedidos-whatsapp` | admin, cajero | Pedidos de WhatsApp por validar (polling cada 5 s), comprobante, ubicación, chat y **Confirmar pago** |
 | `/tablero` | todos | Tablero de cocina y delivery por estado |
