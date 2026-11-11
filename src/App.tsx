@@ -12,6 +12,7 @@ import { PedidosPage } from './pages/PedidosPage'
 import { PedidosWhatsappPage } from './pages/PedidosWhatsappPage'
 import { ReportesPage } from './pages/ReportesPage'
 import { SimuladorPage } from './pages/SimuladorPage'
+import { SsoPage } from './pages/SsoPage'
 import { TableroPage } from './pages/TableroPage'
 import { UsuariosPage } from './pages/UsuariosPage'
 
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/sso" element={<SsoPage />} />
       <Route element={<RequireAuth />}>
         <Route element={<AppLayout />}>
           <Route path="/" element={<RoleHome />} />

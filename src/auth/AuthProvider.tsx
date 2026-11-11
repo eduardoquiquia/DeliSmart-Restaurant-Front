@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
-import { useEffect, useState, type ReactNode } from 'react'
-import { clearTokens, getTokens, LICENSE_BLOCKED_EVENT, login, SESSION_EXPIRED_EVENT } from '../lib/api'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { clearTokens, getTokens, LICENSE_BLOCKED_EVENT, login, loginWithSso, SESSION_EXPIRED_EVENT } from '../lib/api'
 import { useProfile } from '../lib/queries'
 import { AuthContext } from './AuthContext'
 
@@ -30,6 +30,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsAuthenticated(true)
   }
 
+  const signInWithSso = useCallback(
+    async (token: string) => {
+      await loginWithSso(token)
+      queryClient.clear()
+      setIsAuthenticated(true)
+    },
+    [queryClient],
+  )
+
   function logout() {
     clearTokens()
     queryClient.clear()
@@ -37,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, profile, profileError, signIn, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, profile, profileError, signIn, signInWithSso, logout }}>
       {children}
     </AuthContext.Provider>
   )

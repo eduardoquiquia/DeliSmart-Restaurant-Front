@@ -42,6 +42,12 @@ export async function login(username: string, password: string) {
   setTokens(data)
 }
 
+/** Canjea el enlace de un solo uso que genera "Mi Plan" en el panel admin. */
+export async function loginWithSso(token: string) {
+  const { data } = await axios.post<Tokens>(`${BASE_URL}/auth/sso/`, { token })
+  setTokens(data)
+}
+
 api.interceptors.request.use((config) => {
   const tokens = getTokens()
   if (tokens) config.headers.Authorization = `Bearer ${tokens.access}`

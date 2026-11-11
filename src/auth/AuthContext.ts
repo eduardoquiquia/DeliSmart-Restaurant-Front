@@ -6,6 +6,7 @@ export type AuthValue = {
   profile: Profile | undefined
   profileError: boolean
   signIn: (username: string, password: string) => Promise<void>
+  signInWithSso: (token: string) => Promise<void>
   logout: () => void
 }
 
